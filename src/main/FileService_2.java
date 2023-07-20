@@ -9,11 +9,8 @@ import java.util.Set;
 public class FileService_2 {
 
 	private final String FILENAME = "PokerHands.csv";
-//	private final String filePath = "PokerHands.csv";
 
 	public Set<String> readFile() {
-//	public static void readFile(String filePath) {
-//		HashSet<String> pokerHands = new HashSet<>();
 		Set<String> pokerHands = new HashSet<>();
 		boolean isFirstLine = true;
 		int columbNumber = 1;

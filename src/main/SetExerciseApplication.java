@@ -31,7 +31,6 @@ public class SetExerciseApplication {
 
 	public static Set<String> extractDataFromCSV(String fileName) {
 		FileService_2 fileService = new FileService_2();
-//		String fileName1 = "FileService_2";
 		fileService.readFile();
 		return null;
 	}
