@@ -13,7 +13,7 @@ public class FileService {
 	public Set<String> readFile(String fileName) {
 		Set<String> pokerHands = new HashSet<>();
 		boolean isFirstLine = true;
-		int columbNumber = 1;
+		int columbNumberInCSV = 1;
 
 		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
 			String line;
@@ -25,11 +25,11 @@ public class FileService {
 				}
 
 				// Split the line by the CSV delimiter
-				String[] values = line.split(",");
+				String[] valuesInCSV = line.split(",");
 
 				// Add only column 1 to the HashSet
-				if (columbNumber < values.length) {
-					String columnValue = values[columbNumber].trim();
+				if (columbNumberInCSV < valuesInCSV.length) {
+					String columnValue = valuesInCSV[columbNumberInCSV].trim();
 					pokerHands.add(columnValue);
 				}
 			}

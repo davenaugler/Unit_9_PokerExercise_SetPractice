@@ -16,16 +16,16 @@ public class SetExerciseApplication {
 //		Set<String> pokerHands = new HashSet<>();
 		
 		// Updated extractDataFromCSV() request
-		Set<String> pokerHands = extractDataFromCSV("FileService_2.java");
+		Set<String> pokerHands = extractDataFromCSV("FileService.java"); // What should be in these parentheses? 
 		printToConsole(pokerHands);
 		
 		// --- Remove ACE HIGH and QUEEN HIGH --- //
-		removeItem(pokerHands, "ACE HIGH");
-		removeItem(pokerHands, "QUEEN HIGH");
+		removeCard(pokerHands, "ACE HIGH");
+		removeCard(pokerHands, "QUEEN HIGH");
 		printToConsole(pokerHands);
 
 		// --- Update PAIR to DEUCES --- // 
-		updateItem(pokerHands, "PAIR", "DEUCES");
+		updateCard(pokerHands, "PAIR", "DEUCES");
 		printToConsole(pokerHands);
 	}
 
@@ -49,13 +49,12 @@ public class SetExerciseApplication {
 		return fileService.readFile(fileName);
 	}
 
-	private static void removeItem(Set<String> pokerHands, String item) {
-		pokerHands.remove(item);
+	private static void removeCard(Set<String> pokerHands, String hand) {
+		pokerHands.remove(hand);
 	}
 
-	private static void updateItem(Set<String> pokerHands, String item, String cardFace) {
-		pokerHands.contains(item);
-		pokerHands.remove(item);
+	private static void updateCard(Set<String> pokerHands, String hand, String cardFace) {
+		pokerHands.remove(hand);
 		pokerHands.add(cardFace);
 	}
 
