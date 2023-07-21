@@ -7,43 +7,37 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class FileService {
-	
-	private final String FILENAME = "PokerHands.csv";
-	private final int TOTAL_CARDS = 50;
-	
-	public PokerHand[] readFile() throws IOException {
-		PokerHand[] pokerHands = new PokerHand[TOTAL_CARDS];
-		boolean isFirstLine = true;
-		int counter = 0;
 
-		try(BufferedReader fileReader = new BufferedReader(new FileReader(FILENAME))) {
+	private final String FILENAME = "PokerHands.csv";
+
+	public Set<String> readFile(String fileName) {
+		Set<String> pokerHands = new HashSet<>();
+		boolean isFirstLine = true;
+		int columbNumber = 1;
+
+		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
 			String line;
-			while ((line = fileReader.readLine()) != null) {
+			// Skips first line on .csv (aka header on .csv)
+			while ((line = br.readLine()) != null) {
 				if (isFirstLine) {
 					isFirstLine = false;
-					continue; // Skips first line on .csv
+					continue; 
 				}
-				
-				
-//				PokerHand hand = new PokerHand(line.split(","));
-				HashSet hand = new HashSet();
-				pokerHands[counter] = hand;
-				counter++;
-				System.out.println(pokerHands);
-				
-				if (counter >= TOTAL_CARDS) {
-					break; // Reached total number of cards in FILENAME, exit the loop
+
+				// Split the line by the CSV delimiter
+				String[] values = line.split(",");
+
+				// Add only column 1 to the HashSet
+				if (columbNumber < values.length) {
+					String columnValue = values[columbNumber].trim();
+					pokerHands.add(columnValue);
 				}
-				
 			}
-			
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		return null;
-		
-		
+//		System.out.println("FileService returnable data: " + " " + pokerHands);
+		return pokerHands;
 	}
-	
-	
-
-
 }
