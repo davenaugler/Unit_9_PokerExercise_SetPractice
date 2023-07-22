@@ -8,14 +8,12 @@ import java.util.Set;
 
 public class FileService {
 
-	private final String FILENAME = "PokerHands.csv";
-
 	public Set<String> readFile(String fileName) {
 		Set<String> pokerHands = new HashSet<>();
 		boolean isFirstLine = true;
 		int columbNumberInCSV = 1;
 
-		try (BufferedReader br = new BufferedReader(new FileReader(FILENAME))) {
+		try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
 			String line;
 			// Skips first line on .csv (aka header on .csv)
 			while ((line = br.readLine()) != null) {

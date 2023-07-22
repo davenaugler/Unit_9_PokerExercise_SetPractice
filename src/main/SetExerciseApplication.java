@@ -16,7 +16,7 @@ public class SetExerciseApplication {
 //		Set<String> pokerHands = new HashSet<>();
 		
 		// Updated extractDataFromCSV() request
-		Set<String> pokerHands = extractDataFromCSV("FileService.java"); // What should be in these parentheses? 
+		Set<String> pokerHands = extractDataFromCSV("PokerHands.csv"); // What should be in these parentheses? 
 		printToConsole(pokerHands);
 		
 		// --- Remove ACE HIGH and QUEEN HIGH --- //
